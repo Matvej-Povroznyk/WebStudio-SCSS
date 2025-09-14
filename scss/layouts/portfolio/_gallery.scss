@@ -2,141 +2,102 @@
   display: flex;
   margin-top: 100px;
   margin-bottom: 50px;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__button {
+    padding: 6px 25px;
+    border-radius: 4px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      color: $white-color;
+      background-color: $accent-color;
+      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+    }
+  }
 }
 
-.filter-list {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
+.gallery {
+  margin-bottom: 94px;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
 
-.filter-btn {
-  padding: 6px 25px;
-  border-radius: 4px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+  &__item {
+    border: 1px solid #eeeeee;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    width: 350px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 
-.filter-btn:hover {
-  color: var(--white-color);
-  background-color: var(--accent-color);
-  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-}
+    &:hover {
+      box-shadow: 3px 4px 5px 0.1px #00000060;
+      border: none;
+    }
 
-.gallery-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-}
+    &:hover .gallery__overlay,
+    &:hover .gallery__overlay-text {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
 
-.gallery-list > li {
-  border: 1px solid #eeeeee;
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  width: 350px;
-  overflow: hidden;
-  padding-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+  &__img-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
 
-.gallery-list > li:hover {
-  box-shadow: 3px 4px 5px 0.1px #00000060;
-  border: none;
-}
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
-.gallery-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 150, 243, 0.9);
 
-.img-wrapper {
-  position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 
-.gallery-overlay {
-  position: absolute;
-  top: 0; 
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(33, 150, 243, 0.9);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    &-text {
+      color: $grey-color;
+      font-size: 16px;
+      line-height: 1.5;
+      width: 260px;
+      color: white;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
+    }
+  }
 
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.overlay-text {
-  font-size: 16px;
-  line-height: 1.5;
-  width: 260px;
-  color: white;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
-}
-
-.gallery-list > li:hover .gallery-overlay {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.gallery-list > li:hover .overlay-text {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.gallery-text {
-    color: var(--grey-color)
-}
-
-.gallery-text,
-.num,
-.info {
-  color: var(--grey-color);
-}
-
-.gallery-title,
-.gallery-text {
-  margin-left: 24px;
-}
-
-.info,
-.num {
-  position: relative;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-.mail,
-.tel {
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mail {
-  display: block;
-  width: 16px;
-  height: 12px;
-  position: absolute;
-  left: -30px;
-  top: 2px;
-}
-
-.tel {
-  display: block;
-  width: 10px;
-  height: 16px;
-  position: absolute;
-  left: -17px;
-  top: 0;
+  &__title,
+  &__category {
+    margin-left: 24px;
+  }
 }
