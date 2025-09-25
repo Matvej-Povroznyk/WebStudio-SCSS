@@ -1,31 +1,24 @@
 .important {
-  display: flex;
+  @include flex();
   margin-top: 94px;
 
   &__list {
-    display: flex;
-    gap: 30px;
+    @include flex($gap: 30px);
   }
 
   &__title {
-    font-size: 14px;
-    line-height: 1.14;
-    letter-spacing: 3%;
-    text-transform: uppercase;
+    @include text(14px, 1.14, $letter-spacing: 3%, $text-transform: uppercase)
   }
 
   &__text {
-    font-size: 14px;
-    line-height: 1.71;
-    color: $grey-color;
+    @include text(14px, 1.71, $color: $grey-color)
   }
 
   &__item {
     &::before {
       content: "";
       display: inline-block;
-      width: 270px;
-      height: 120px;
+      @include size(270px, 120px);
       border-radius: 4px;
       margin-bottom: 30px;
       background-position: center;

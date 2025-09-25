@@ -1,13 +1,9 @@
 .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  @include setPosition(fixed, 0, $left: 0, $transform: translateY(0));
+  @include size(100vw, 100vh);
   background-color: rgba(0, 0, 0, 20%);
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 200ms ease;
 }
@@ -15,7 +11,7 @@
 .backdrop--hidden {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-50%);
+  @include setPosition($transform: translateY(-50%))
 }
 
 .no-scroll {
@@ -23,71 +19,56 @@
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 520px;
-  height: 581px;
+  @include setPosition(absolute, 50%, $left: 50%, $transform: translate(-50%, -50%));
+  @include size(520px, 581px);
   padding: 8px 40px 40px;
   background-color: #fff;
-  transform: translate(-50%, -50%);
 
   &__close-button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex(column, $justify-content: center);
     margin-left: 430px;
     padding: 6px;
     border: 1px solid #0000001a;
     border-radius: 50%;
     background-color: transparent;
-    color: black;
+    @include text($color: black)
   }
 
   &__close-icon {
-    width: 18px;
-    height: 18px;
+    @include size(18px, 18px)
   }
 
   &__label {
-    position: relative;
+    @include setPosition(relative);
     display: block;
     margin-top: 10px;
-    font-size: 12px;
-    color: #757575;
+    @include text(12px, $color: #757575);
 
     &:nth-child(5) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @extend %flex-center;
       margin-top: 20px;
     }
   }
 
   &__icon {
-    position: absolute;
-    top: 28px;
-    left: 12px;
+    @include setPosition(absolute, 28px, $left: 12px);
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    width: 18px;
-    height: 18px;
+    @include size(18px, 18px);
   }
 
   &__form {
     margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    @include flex(column, $align-items: center);
   }
 
   &__title {
-    text-align: center;
+    @include text($text-align: center)
   }
 
   &__input,
   &__textarea {
     display: block;
-    width: 448px;
+    @include size(448px);
     border: 1px solid #21212133;
     border-radius: 4px;
     outline: none;
@@ -95,7 +76,7 @@
   }
 
   &__input {
-    height: 40px;
+    @include size(null, 40px);
     margin-top: 4px;
     padding-left: 36px;
 
@@ -111,7 +92,7 @@
   }
 
   &__textarea {
-    height: 120px;
+    @include size(null, 120px);
     padding: 16px;
     resize: none;
     transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -127,29 +108,23 @@
 
     &:hover::placeholder,
     &:hover::placeholder {
-      color: $accent-color;
+      @include text($color: $accent-color);
     }
   }
 
   &__checkbox {
-    width: 16px;
-    height: 16px;
+    @include size(16px, 16px);
     accent-color: $accent-color;
   }
 
   &__text {
+    @include text(null, 1.7, $letter-spacing: 3%);
     margin-left: 4px;
-    line-height: 1.7;
-    letter-spacing: 3%;
   }
 
   &__send {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.875;
-    color: white;
+    @extend %flex-align-center;
+    @include text(16px, 1.875, null, 700, white);
     background-color: $accent-color;
     border-radius: 4px;
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -164,7 +139,6 @@
   }
 
   &__link {
-    color: $accent-color;
-    text-decoration: underline;
+    @include text($color: $accent-color, $text-decoration: underline);
   }
 }

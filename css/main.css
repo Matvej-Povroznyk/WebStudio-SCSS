@@ -1,3 +1,24 @@
+.modal__label:nth-child(5) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal__send {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 *,
 *::before,
 *::after {
@@ -93,15 +114,6 @@ body {
   color: #757575;
 }
 .modal__label:nth-child(5) {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   margin-top: 20px;
 }
 .modal__icon {
@@ -200,20 +212,14 @@ body {
   accent-color: #2196f3;
 }
 .modal__text {
-  margin-left: 4px;
   line-height: 1.7;
   letter-spacing: 3%;
+  margin-left: 4px;
 }
 .modal__send {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-weight: 700;
   font-size: 16px;
   line-height: 1.875;
+  font-weight: 700;
   color: white;
   background-color: #2196f3;
   border-radius: 4px;

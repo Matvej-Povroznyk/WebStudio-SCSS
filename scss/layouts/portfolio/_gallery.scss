@@ -1,12 +1,10 @@
 .filters {
-  display: flex;
+  @include flex();
   margin-top: 100px;
   margin-bottom: 50px;
 
   &__list {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+    @include flex($justify-content: center, $gap: 8px);
   }
 
   &__button {
@@ -16,7 +14,7 @@
       box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-      color: $white-color;
+      @include text($color: $white-color);
       background-color: $accent-color;
       box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
     }
@@ -26,21 +24,17 @@
 .gallery {
   margin-bottom: 94px;
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+    @include flex($flex-wrap: wrap, $gap: 30px);
   }
 
   &__item {
     border: 1px solid #eeeeee;
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    width: 350px;
+    @include setPosition(relative);
+    @include size(350px);
     overflow: hidden;
     padding-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    @include flex(column, $gap: 20px);
 
     &:hover {
       box-shadow: 3px 4px 5px 0.1px #00000060;
@@ -55,43 +49,32 @@
   }
 
   &__img-wrapper {
-    position: relative;
-    width: 100%;
-    height: auto;
+    @include setPosition(relative);
+    @include size(100%, auto);
     overflow: hidden;
   }
 
   &__img {
     display: block;
-    width: 100%;
-    height: auto;
+    @include size(100%, auto)
   }
 
   &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    @include setPosition(absolute, 0, $left: 0, $transform: translateY(100%));
+    @include size(100%, 100%);
     background: rgba(33, 150, 243, 0.9);
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend %flex-center;
     padding: 20px;
 
-    transform: translateY(100%);
     opacity: 0;
     transition: transform 0.4s ease, opacity 0.4s ease;
 
     &-text {
-      color: $grey-color;
-      font-size: 16px;
-      line-height: 1.5;
-      width: 260px;
-      color: white;
+      @include text(16px, 1.5, $color: white);
+      @include size(240px);
       opacity: 0;
-      transform: translateY(20px);
+      @include setPosition($transform: translateY(20px));
       transition: opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s;
     }
   }

@@ -1,99 +1,79 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex($justify-content: space-between, $align-items: center);
   padding: 12px 0;
 
   &__logo {
-    font-family: "Raleway";
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 1.19;
-    letter-spacing: 3%;
-    color: black;
+    @include text(26px, 1.19, "Raleway", 700, black, 3%);
 
     &-part--web {
-      color: $accent-color;
+      @include text($color: $accent-color)
     }
   }
 
   .nav__list {
-    display: flex;
-    gap: 30px;
+    @include flex($gap: 30px);
 
     .nav__item {
-      position: relative;
+      @include setPosition(relative);
 
       .nav__underline {
         background-color: $accent-color;
-        height: 4px;
-        position: absolute;
-        top: 33px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
+        @include size(0, 4px);
+        @include setPosition(absolute, 33px, $left: 50%, $transform: translateX(-50%));
         transition: width 0.3s linear;
       }
 
       .nav__link {
-        font-family: "Roboto", sans-serif;
-        font-weight: 500;
-        font-size: 14px;
-        color: black;
-        line-height: 1.14;
-        letter-spacing: 2%;
+        @include text(14px, 1.14, ("Roboto", sans-serif), 500, black, 2%);
         transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
         &:hover {
-          color: $accent-color;
+          @include text($color: $accent-color);
         }
 
         &:hover + .nav__underline {
-          width: 100%;
+          @include size(100%)
         }
       }
     }
 
     .nav__item--active {
       .nav__underline {
-        width: 100%;
+        @include size(100%)
       }
 
       .nav__link {
-        color: $accent-color;
+        @include text($color: $accent-color);
       }
     }
   }
 
   .address__list {
-    display: flex;
-    gap: 50px;
+    @include flex($gap: 50px);
   }
 
   .address__link {
     &--info {
-      position: relative;
+      @include setPosition(relative);
       transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
+      @extend %flex-align-center;
+      @include text($color: black);
 
-      color: black;
       &:hover {
-        color: $accent-color;
+        @include text($color: $accent-color);
       }
       &:hover > .address__icon--mail {
         fill: $accent-color;
       }
     }
     &--num {
-      position: relative;
+      @include setPosition(relative);
       transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
+      @extend %flex-align-center;
+      @include text($color: black);
 
-      color: black;
       &:hover {
-        color: $accent-color;
+        @include text($color: $accent-color);
       }
       &:hover > .address__icon--tel {
         fill: $accent-color;
@@ -104,21 +84,15 @@
   .address__icon {
     &--mail {
       display: block;
-      width: 16px;
-      height: 12px;
-      position: absolute;
-      left: -30px;
-      top: 2px;
+      @include size(16px, 12px);
+      @include setPosition(absolute, 2px, $left: -30px);
       transition: fill 0.3s ease;
     }
 
     &--tel {
       display: block;
-      width: 10px;
-      height: 16px;
-      position: absolute;
-      left: -17px;
-      top: 0;
+      @include size(10px, 16px);
+      @include setPosition(absolute, 0, $left: -17px);
       transition: fill 0.3s ease;
     }
   }
