@@ -8,6 +8,17 @@
 
 ```text
 ---
+[FIX] Version: 17.10.2025 (Friday, 17th of October)
+Commit time: 2025-10-17T21:15:00+03:00  (Europe/Kyiv, EEST)
+
+🔧 What's fixed?
+Fixed bug in "mob" menu in portfolio.
+
+---
+```
+
+```text
+---
 Version: 17.10.2025 (Friday, 17th of October)
 Commit time: 2025-10-17T21:00:00+03:00 (Europe/Kyiv, EEST)
 
