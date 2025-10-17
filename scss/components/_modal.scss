@@ -1,3 +1,149 @@
+// .backdrop {
+//   @include setPosition(fixed, 0, $left: 0, $transform: translateY(0));
+//   @include size(100vw, 100vh);
+//   background-color: rgba(0, 0, 0, 20%);
+//   opacity: 1;
+//   visibility: visible;
+//   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 200ms ease;
+//   z-index: 1;
+
+//   &--hidden {
+//     opacity: 0;
+//     visibility: hidden;
+//     transform: translateY(-50%)
+//   }
+// }
+
+// .no-scroll {
+//   overflow: hidden;
+// }
+
+// .modal {
+//   @include setPosition(absolute, 50%, $left: 50%, $transform: translate(-50%, -50%));
+//   @include size(520px, 581px);
+//   padding: 8px 40px 40px;
+//   background-color: #fff;
+
+//   &__close-button {
+//     @include flex(column, $justify-content: center);
+//     margin-left: 430px;
+//     padding: 6px;
+//     border: 1px solid #0000001a;
+//     border-radius: 50%;
+//     background-color: transparent;
+//     @include text($color: black)
+//   }
+
+//   &__close-icon {
+//     @include size(18px, 18px)
+//   }
+
+//   &__label {
+//     @include setPosition(relative);
+//     display: block;
+//     margin-top: 10px;
+//     @include text(12px, $color: #757575);
+
+//     &:nth-child(5) {
+//       @extend %flex-center;
+//       margin-top: 20px;
+//     }
+//   }
+
+//   &__icon {
+//     @include setPosition(absolute, 28px, $left: 12px);
+//     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+//     @include size(18px, 18px);
+//   }
+
+//   &__form {
+//     margin-top: 12px;
+//     @include flex(column, $align-items: center);
+//   }
+
+//   &__title {
+//     @include text($text-align: center)
+//   }
+
+//   &__input,
+//   &__textarea {
+//     display: block;
+//     @include size(448px);
+//     border: 1px solid #21212133;
+//     border-radius: 4px;
+//     outline: none;
+//     transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+//   }
+
+//   &__input {
+//     @include size(null, 40px);
+//     margin-top: 4px;
+//     padding-left: 36px;
+
+//     &:hover,
+//     &:focus {
+//       border: 1px solid $accent-color;
+//     }
+
+//     &:hover + .modal__icon,
+//     &:focus + .modal__icon {
+//       fill: $accent-color;
+//     }
+//   }
+
+//   &__textarea {
+//     @include size(null, 120px);
+//     padding: 16px;
+//     resize: none;
+//     transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+//     &::placeholder {
+//       transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+//     }
+
+//     &:hover,
+//     &:focus {
+//       border: 1px solid $accent-color;
+//     }
+
+//     &:hover::placeholder,
+//     &:hover::placeholder {
+//       @include text($color: $accent-color);
+//     }
+//   }
+
+//   &__checkbox {
+//     @include size(16px, 16px);
+//     accent-color: $accent-color;
+//   }
+
+//   &__text {
+//     @include text(null, 1.7, $letter-spacing: 3%);
+//     margin-left: 4px;
+//   }
+
+//   &__send {
+//     @extend %flex-align-center;
+//     @include text(16px, 1.875, null, 700, white);
+//     background-color: $accent-color;
+//     border-radius: 4px;
+//     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+//     padding: 10px 50px;
+//     margin-top: 30px;
+//     margin-bottom: 50px;
+//     box-shadow: 2px 3px 2px #00000026;
+
+//     &:hover {
+//       background-color: #1766a7;
+//     }
+//   }
+
+//   &__link {
+//     @include text($color: $accent-color, $text-decoration: underline);
+//   }
+// }
+
 .backdrop {
   @include setPosition(fixed, 0, $left: 0, $transform: translateY(0));
   @include size(100vw, 100vh);
@@ -11,7 +157,7 @@
   &--hidden {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
   }
 }
 
@@ -20,30 +166,52 @@
 }
 
 .modal {
-  @include setPosition(absolute, 50%, $left: 50%, $transform: translate(-50%, -50%));
-  @include size(520px, 581px);
-  padding: 8px 40px 40px;
+  @include setPosition(
+    absolute,
+    50%,
+    $left: 50%,
+    $transform: translate(-50%, -50%)
+  );
+  @media screen and (min-width: 480px) and (max-width: 1199px) {
+    @include size(450px, 609px);
+  }
+  @media screen and (min-width: 1200px) {
+    @include size(528px, 581px)
+  }
+  padding: 8px 40px 40px 40px;
   background-color: #fff;
 
   &__close-button {
     @include flex(column, $justify-content: center);
-    margin-left: 430px;
+    justify-self: flex-end;
+    margin-right: -8%;
     padding: 6px;
     border: 1px solid #0000001a;
     border-radius: 50%;
     background-color: transparent;
-    @include text($color: black)
+
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: $accent-color;
+
+      .modal__close-icon {
+        fill: $accent-color
+      }
+    }
   }
 
   &__close-icon {
-    @include size(18px, 18px)
+    @include size(18px, 18px);
+
+    transition: fill 0.2s ease;
   }
 
   &__label {
     @include setPosition(relative);
     display: block;
     margin-top: 10px;
-    @include text(12px, $color: #757575);
+    @include text(12px, $color: $grey-color);
 
     &:nth-child(5) {
       @extend %flex-center;
@@ -63,13 +231,19 @@
   }
 
   &__title {
-    @include text($text-align: center)
+    @include text(20px, 1.5, null, 700, #212121, 3%, center);
   }
 
   &__input,
   &__textarea {
     display: block;
-    @include size(448px);
+    margin-top: 4px;
+    @media screen and (min-width: 480px) and (max-width: 1199px) {
+      @include size(370px);
+    }
+    @media screen and (min-width: 1200px) {
+      @include size(448px)
+    }
     border: 1px solid #21212133;
     border-radius: 4px;
     outline: none;
@@ -78,15 +252,12 @@
 
   &__input {
     @include size(null, 40px);
-    margin-top: 4px;
     padding-left: 36px;
 
-    &:hover,
     &:focus {
       border: 1px solid $accent-color;
     }
 
-    &:hover + .modal__icon,
     &:focus + .modal__icon {
       fill: $accent-color;
     }
@@ -94,21 +265,17 @@
 
   &__textarea {
     @include size(null, 120px);
-    padding: 16px;
-    resize: none;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 12px 16px;
 
     &::placeholder {
       transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    &:hover,
     &:focus {
       border: 1px solid $accent-color;
     }
 
-    &:hover::placeholder,
-    &:hover::placeholder {
+    &:focus::placeholder {
       @include text($color: $accent-color);
     }
   }
@@ -119,20 +286,25 @@
   }
 
   &__text {
-    @include text(null, 1.7, $letter-spacing: 3%);
-    margin-left: 4px;
+    @media screen and (min-width: 480px) and (max-width: 1199px) {
+      @include text(12px, null, 3%);
+    }
+    @media screen and (min-width: 1200px) {
+      @include text(14px, 1.71, 3%)
+    }
+    margin-left: 8px;
   }
 
   &__send {
     @extend %flex-align-center;
-    @include text(16px, 1.875, null, 700, white);
+    @include text(16px, 1.875, null, 700, white, 6%);
     background-color: $accent-color;
     border-radius: 4px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 10px 50px;
+    padding: 10px 52px;
     margin-top: 30px;
-    margin-bottom: 50px;
     box-shadow: 2px 3px 2px #00000026;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
       background-color: #1766a7;

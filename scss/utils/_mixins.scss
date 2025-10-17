@@ -43,8 +43,34 @@
   }
 }
 
+@mixin max-size($width: null, $height: null) {
+  $props: (
+    max-width: $width,
+    max-height: $height,
+  );
+
+  @each $prop, $value in $props {
+    @if $value != null {
+      #{$prop}: $value;
+    }
+  }
+}
+
+@mixin min-size($width: null, $height: null) {
+  $props: (
+    min-width: $width,
+    min-height: $height,
+  );
+
+  @each $prop, $value in $props {
+    @if $value != null {
+      #{$prop}: $value;
+    }
+  }
+}
+
 @mixin setPosition(
-  $position: static,
+  $position: null,
   $top: null,
   $right: null,
   $bottom: null,
@@ -59,9 +85,11 @@
     transform: $transform,
   );
 
-  position: $position;
+  @if $position != null {
+    position: $position;
+  }
 
-  @if $position != static {
+  @if $position != static and $position != null {
     @each $prop, $value in $props {
       @if $value != null {
         #{$prop}: $value;

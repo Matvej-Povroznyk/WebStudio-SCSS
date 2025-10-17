@@ -1,6 +1,8 @@
 @import "./utils/variables";
+@import "./utils/mixins";
+@import "./utils/placeholders";
 @import "./base/reset";
 @import "./components/container";
-@import './layouts/portfolio/header';
-@import './layouts/portfolio/gallery';
-@import './layouts/portfolio/footer'
+@import "./layouts/portfolio/header";
+@import "./layouts/portfolio/gallery";
+@import "./layouts/portfolio/footer";

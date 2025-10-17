@@ -1,27 +1,42 @@
 .work {
-  @include flex($gap: 30px);
+  margin-top: 94px;
+  display: none;
 
-  &__list {
+  @media screen and (min-width: 1200px) {
+    display: block;
     @include flex($gap: 30px);
-    padding-left: 0;
-  }
 
-  &__item {
-    @include setPosition(relative);
-    flex-basis: calc((100% - 30px * 2) / 3);
-  }
+    &__list {
+      @include flex($gap: 30px);
+      padding-left: 0;
+    }
 
-  &__title {
-    @extend %flex-justify-center;
-    @include text(36px, 1.16, null, 700, null, 3%);
-    margin-bottom: 50px;
-  }
+    &__item {
+      @include setPosition(relative);
+      flex-basis: calc((100% - 30px * 2) / 3);
+    }
 
-  &__label {
-    @include text(null, null, ("Roboto", sans-serif), 700, white, null, center, uppercase);
-    background-color: #2f303acc;
-    padding: 28px;
-    @include setPosition(absolute, 220px, 0, null, 0);
-    user-select: none;
+    &__title {
+      @include flex($justify-content: center);
+      @include text(36px, 1.16, null, 700, null, 3%);
+      margin-bottom: 50px;
+    }
+
+    &__label {
+      @include text(
+        null,
+        null,
+        ("Roboto", sans-serif),
+        700,
+        white,
+        null,
+        center,
+        uppercase
+      );
+      background-color: #2f303acc;
+      padding: 28px;
+      @include setPosition(absolute, 220px, 0, null, 0);
+      user-select: none;
+    }
   }
 }

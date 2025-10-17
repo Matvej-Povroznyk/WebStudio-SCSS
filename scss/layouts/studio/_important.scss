@@ -1,24 +1,43 @@
 .important {
   @include flex();
-  margin-top: 94px;
+  margin-top: 60px;
 
   &__list {
-    @include flex($gap: 30px);
+    @include flex(column, $gap: 30px);
+    @media screen and (min-width: 768px) {
+      @include flex(row, $gap: 30px, $wrap: wrap);
+    }
   }
 
   &__title {
-    @include text(14px, 1.14, $letter-spacing: 3%, $text-transform: uppercase)
+    @include text(
+      14px,
+      $letter-spacing: 3%,
+      $text-transform: uppercase,
+      $text-align: center
+    );
+    @media screen and (min-width: 768px) {
+      @include text($text-align: left);
+    }
+    margin-bottom: 10px;
   }
 
   &__text {
-    @include text(14px, 1.71, $color: $grey-color)
+    @include text(14px, 1.71, $color: $grey-color);
   }
 
   &__item {
+    @media screen and (min-width: 768px) {
+      width: calc((100% - 30px * 1) / 2);
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: calc((100% - 30px * 3) / 4);
+    }
     &::before {
       content: "";
       display: inline-block;
-      @include size(270px, 120px);
+      @include size(100%, 120px);
       border-radius: 4px;
       margin-bottom: 30px;
       background-position: center;

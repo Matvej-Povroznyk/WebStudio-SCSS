@@ -1,133 +1,184 @@
 .footer {
-  @include setPosition(relative);
-  padding: 60px 0;
+  margin-top: 60px;
+  padding: 65px 0;
   background-color: $bg-color;
 
+  @media screen and (min-width: 768px) {
+    @include setPosition(relative);
+    padding: 60px 0;
+  }
+
+  &__content {
+    @media screen and (min-width: 1200px) {
+      @include flex(row);
+    }
+  }
+
   &__logo {
-    @include text(26px, 1.19, "Raleway", 700, null, 3%);
+    @include text(
+      24px,
+      null,
+      "Raleway",
+      700,
+      $text-align: center,
+      $color: white
+    );
 
     &-part--web {
       @include text($color: $accent-color);
     }
   }
 
-  &__address-list {
-    @include flex(column, $gap: 0);
-  }
-
-  &__address-item {
-    @include text(14px, 1.71, $color: $grey-color);
-  }
-
-  &__address-link {
-    &--info,
-    &--num {
-      @include text($color: rgba(255, 255, 255, 0.6));
+  &__info {
+    @include flex(column, $gap: 20px, $align-items: center);
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      @include setPosition(absolute, 60px, $left: 76px);
     }
   }
 
-  &__address-text {
-    @include text($color: $white-color);
-  }
-
-  &__join {
-    @include setPosition(absolute, 65px, $left: 600px);
-
-    &-title {
-      @include text($color: white, $text-transform: uppercase);
-      margin-bottom: 20px;
-    }
-
+  &__address {
     &-list {
-      @include flex($gap: 10px);
-      padding-left: 0;
+      @include flex(column, $gap: 8px, $align-items: center);
+      font-style: normal;
     }
 
-    &-item {
-      background-color: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
+    &-text {
+      @include text(14px, 1.71, $color: $white-color, $font-weight: 400);
     }
 
     &-link {
-      padding: 12px;
-      @include flex(column, $justify-content: center);
+      &--info,
+      &--num {
+        @include text($color: rgba(255, 255, 255, 0.6), $font-weight: 400);
+      }
+    }
+  }
+
+  &__join {
+    @media screen and (min-width: 480px) and (max-width: 1199px) {
+      margin-top: 60px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      @include setPosition(absolute, 0, $right: 90px);
+    }
+    @media screen and (min-width: 1200px) {
+      margin-left: 70px;
+    }
+    &-title {
+      @include text(
+        14px,
+        $font-weight: 700,
+        $text-align: center,
+        $color: $white-color,
+        $text-transform: uppercase
+      );
+    }
+
+    &-list {
+      margin-top: 20px;
+      @include flex(row, $gap: 10px, $justify-content: center);
+    }
+
+    &-item {
       border-radius: 50%;
-      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      transition: background-color 0.2s ease;
 
       &:hover {
         background-color: $accent-color;
       }
+    }
 
-      &:hover .footer__join-icon {
-        fill: white;
-      }
+    &-link {
+      @include flex($align-items: center, $justify-content: center);
     }
 
     &-icon {
       @include size(20px, 20px);
-      fill: #afb1b8;
+      fill: white;
     }
   }
 
   &__subscribe {
-    @include setPosition(absolute, 65px, $left: 860px);
-  }
-
-  &__submit {
-    @extend %flex-align-center;
-    padding: 10px 28px;
-    @include text(16px, 1.875, null, 700, white);
-    background-color: $accent-color;
-    border-radius: 4px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    &-icon {
-      @include size(24px, 24px);
-      margin-left: 10px;
-      fill: white;
-      transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and (min-width: 480px) and (max-width: 767px) {
+      margin-top: 60px;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1199px) {
+      margin-top: 250px;
+    }
+    @media screen and (min-width: 1200px) {
+      margin-left: 93px;
     }
 
-    &:hover {
-      background-color: #1766a7;
-    }
-  }
+    .subscribe {
+      &__form {
+        &-row {
+          @media screen and (min-width: 1200px) {
+            @include flex(row, $align-items: center, $gap: 12px);
+          }
+        }
+        &-title {
+          @include text(
+            14px,
+            $font-weight: 700,
+            $color: $white-color,
+            $text-transform: uppercase
+          );
+          @include flex(row);
+          justify-self: center;
+          margin-bottom: 20px;
+        }
 
-  &__form {
-    &-title {
-      @include text($font-weight: 700, $color: white, $text-transform: uppercase);
-      display: block;
-      margin-bottom: 20px;
-    }
-    &-row {
-      @include flex($gap: 10px, $align-items: center);
-    }
-  }
+        &-input {
+          @include size(100%);
+          @media screen and (min-width: 768px) and (max-width: 1199px) {
+            @include size(450px);
+          }
 
-  &__input {
-    display: block;
-    @include size(360px, 50px);
-    padding-left: 16px;
-    background-color: transparent;
-    border: 1px solid #ffffff4d;
-    border-radius: 4px;
-    outline: none;
-    caret-color: white;
-    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+          @media screen and (min-width: 1200px) {
+            @include size(358px, 50px);
+          }
+          padding: 16px;
+          background-color: transparent;
+          outline: none;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 4px;
+          color: white;
 
-    &:hover,
-    &:focus {
-      border-color: $accent-color;
-    }
+          @media screen and (min-width: 480px) and (max-width: 1199px) {
+            @include flex(row);
+            justify-self: center;
+          }
 
-    &::placeholder {
-      @include text(16px, 1.25, $color: #ffffff99, $letter-spacing: 3%);
-      transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    }
+          &::placeholder {
+            @include text(
+              16px,
+              1.25,
+              $font-weight: 400,
+              $color: rgba(255, 255, 255, 0.6)
+            );
+          }
+        }
 
-    &:hover::placeholder,
-    &:focus::placeholder {
-      @include text($color: $accent-color);
+        &-submit {
+          background-color: $accent-color;
+          @include text(16px, 1.875, $font-weight: 700, $color: $white-color);
+          @include flex(row, $align-items: center);
+          @media screen and (min-width: 480px) and (max-width: 1199px) {
+            margin-top: 20px;
+            justify-self: center;
+          }
+          padding: 10px 31px;
+          border-radius: 4px;
+
+          &-icon {
+            @include size(24px, 24px);
+            margin-left: 12px;
+            fill: white;
+          }
+        }
+      }
     }
   }
 }

@@ -1,11 +1,11 @@
 %flex-center {
-    @include flex($justify-content: center, $align-items: center);
+  @include flex($justify-content: center, $align-items: center);
 }
 
 %flex-justify-center {
-    @include flex($justify-content: center)
+  @include flex($justify-content: center);
 }
 
 %flex-align-center {
-    @include flex($align-items: center);
+  @include flex($align-items: center);
 }
