@@ -23,6 +23,8 @@ Now supported devices is:
 Fixed devices:
 - Mobile.
 
+Image sorting for different pages has also been added, and 1x/2x retina images have been added.
+
 ---
 ```
 
