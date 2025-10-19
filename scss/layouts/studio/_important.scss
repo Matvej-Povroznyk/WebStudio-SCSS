@@ -1,23 +1,24 @@
 .important {
-  @include flex();
+  display: flex;
   margin-top: 60px;
 
   &__list {
-    @include flex(column, $gap: 30px);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     @media screen and (min-width: 768px) {
-      @include flex(row, $gap: 30px, $wrap: wrap);
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      gap: 30px;
     }
   }
 
   &__title {
-    @include text(
-      14px,
-      $letter-spacing: 3%,
-      $text-transform: uppercase,
-      $text-align: center
-    );
+    text-transform: uppercase;
+    text-align: center;
     @media screen and (min-width: 768px) {
-      @include text($text-align: left);
+      text-align: left;
     }
     margin-bottom: 10px;
   }
@@ -47,25 +48,25 @@
 
     &--antenna {
       &::before {
-        background-image: url(../img/antenna.png);
+        background-image: url(../img/studio/antenna.png);
       }
     }
 
     &--clock {
       &::before {
-        background-image: url(../img/clock.png);
+        background-image: url(../img/studio/clock.png);
       }
     }
 
     &--diagram {
       &::before {
-        background-image: url(../img/diagram.png);
+        background-image: url(../img/studio/diagram.png);
       }
     }
 
     &--astronaut {
       &::before {
-        background-image: url(../img/astronaut.png);
+        background-image: url(../img/studio/astronaut.png);
       }
     }
   }

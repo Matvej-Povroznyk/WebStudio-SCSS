@@ -3,12 +3,14 @@
   background-color: #fff;
 
   &__title {
-    @include text(28px, $letter-spacing: 3%, $text-align: center);
+    text-align: center;
     margin-bottom: 30px;
   }
 
   &__list {
-    @include flex($wrap: wrap, $gap: 30px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
   }
 
   &__item {
@@ -22,7 +24,7 @@
     @media screen and (min-width: 1200px) {
       width: calc((100% - 30px * 5) / 6);
     }
-    @include flex($justify-content: center);
+    @extend %flex-justify-center;
     transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {

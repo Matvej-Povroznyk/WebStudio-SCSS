@@ -5,10 +5,6 @@
   $font-weight: null,
   $color: null,
   $letter-spacing: null,
-  $text-align: null,
-  $text-transform: null,
-  $text-decoration: null,
-  $white-space: null
 ) {
   $props: (
     font-size: $font-size,
@@ -17,10 +13,6 @@
     font-weight: $font-weight,
     color: $color,
     letter-spacing: $letter-spacing,
-    text-align: $text-align,
-    text-transform: $text-transform,
-    text-decoration: $text-decoration,
-    white-space: $white-space,
   );
 
   @each $prop, $value in $props {
@@ -65,71 +57,6 @@
   @each $prop, $value in $props {
     @if $value != null {
       #{$prop}: $value;
-    }
-  }
-}
-
-@mixin setPosition(
-  $position: null,
-  $top: null,
-  $right: null,
-  $bottom: null,
-  $left: null,
-  $transform: null
-) {
-  $props: (
-    top: $top,
-    right: $right,
-    bottom: $bottom,
-    left: $left,
-    transform: $transform,
-  );
-
-  @if $position != null {
-    position: $position;
-  }
-
-  @if $position != static and $position != null {
-    @each $prop, $value in $props {
-      @if $value != null {
-        #{$prop}: $value;
-      }
-    }
-  }
-}
-
-@mixin flex(
-  $direction: null,
-  $row-gap: null,
-  $column-gap: null,
-  $gap: null,
-  $justify-content: null,
-  $align-items: null,
-  $wrap: null
-) {
-  $props: (
-    flex-direction: $direction,
-    justify-content: $justify-content,
-    align-items: $align-items,
-    flex-wrap: $wrap,
-  );
-
-  display: flex;
-
-  @each $prop, $value in $props {
-    @if $value != null {
-      #{$prop}: $value;
-    }
-  }
-
-  @if $gap != null {
-    gap: $gap;
-  } @else {
-    @if $row-gap != null {
-      row-gap: $row-gap;
-    }
-    @if $column-gap != null {
-      column-gap: $column-gap;
     }
   }
 }

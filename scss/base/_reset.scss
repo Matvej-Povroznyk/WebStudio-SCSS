@@ -11,7 +11,13 @@ ul {
 }
 
 a {
-  @include text($text-decoration: none)
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 button {

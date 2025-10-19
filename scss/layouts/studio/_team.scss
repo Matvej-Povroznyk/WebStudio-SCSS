@@ -4,17 +4,18 @@
   padding: 60px 0;
 
   &__title {
-    @include text(28px, $text-align: center);
+    @include text(28px);
+    text-align: center;
     margin-bottom: 30px;
   }
 
   &__list {
-    @include flex(column, $gap: 30px);
-    @media screen and (min-width: 768px) and (max-width: 1199px) {
-      @include flex(row, $gap: 30px, $wrap: wrap);
-    }
-    @media screen and (min-width: 1200px) {
-      @include flex(row, $gap: 30px, $wrap: wrap);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 
@@ -32,15 +33,15 @@
     border-radius: 4px;
 
     .member {
-      &__photo {
-        @include size(100%);
-      }
 
       &__info {
         margin-top: 30px;
         margin-bottom: 16px;
         width: 100%;
-        @include flex(column, $gap: 10px, $align-items: center);
+        @extend %flex-align-center;
+        flex-direction: column;
+        gap: 10px;
+
       }
 
       &__name {
@@ -52,7 +53,8 @@
       }
 
       &__socials {
-        @include flex($gap: 10px, $justify-content: center);
+        @extend %flex-justify-center;
+        gap: 10px;
         margin-bottom: 24px;
       }
 
@@ -72,7 +74,8 @@
         }
 
         &-link {
-          @include flex(column, $align-items: center);
+          @extend %flex-align-center;
+          flex-direction: column;
         }
 
         &-icon {

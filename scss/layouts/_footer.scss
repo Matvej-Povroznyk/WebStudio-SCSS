@@ -4,25 +4,20 @@
   background-color: $bg-color;
 
   @media screen and (min-width: 768px) {
-    @include setPosition(relative);
+    position: relative;
     padding: 60px 0;
   }
 
   &__content {
     @media screen and (min-width: 1200px) {
-      @include flex(row);
+      display: flex;
+      flex-direction: row;
     }
   }
 
   &__logo {
-    @include text(
-      24px,
-      null,
-      "Raleway",
-      700,
-      $text-align: center,
-      $color: white
-    );
+    @include text(24px, null, "Raleway", 700, $color: white);
+    text-align: center;
 
     &-part--web {
       @include text($color: $accent-color);
@@ -30,15 +25,20 @@
   }
 
   &__info {
-    @include flex(column, $gap: 20px, $align-items: center);
+    @extend %flex-align-center;
+    flex-direction: column;
     @media screen and (min-width: 768px) and (max-width: 1199px) {
-      @include setPosition(absolute, 60px, $left: 76px);
+      position: absolute;
+      top: 60px;
+      left: 76px;
     }
   }
 
   &__address {
     &-list {
-      @include flex(column, $gap: 8px, $align-items: center);
+      @extend %flex-align-center;
+      flex-direction: column;
+      gap: 8px;
       font-style: normal;
     }
 
@@ -55,28 +55,27 @@
   }
 
   &__join {
-    @media screen and (min-width: 480px) and (max-width: 1199px) {
       margin-top: 60px;
-    }
     @media screen and (min-width: 768px) and (max-width: 1199px) {
-      @include setPosition(absolute, 0, $right: 90px);
+      position: absolute;
+      top: 0;
+      right: 90px;
     }
     @media screen and (min-width: 1200px) {
       margin-left: 70px;
+      margin-top: 0;
     }
     &-title {
-      @include text(
-        14px,
-        $font-weight: 700,
-        $text-align: center,
-        $color: $white-color,
-        $text-transform: uppercase
-      );
+      @include text(14px, $font-weight: 700, $color: $white-color);
+      text-align: center;
+      text-transform: uppercase;
     }
 
     &-list {
       margin-top: 20px;
-      @include flex(row, $gap: 10px, $justify-content: center);
+      @extend %flex-justify-center;
+      flex-direction: row;
+      gap: 10px;
     }
 
     &-item {
@@ -91,7 +90,7 @@
     }
 
     &-link {
-      @include flex($align-items: center, $justify-content: center);
+      @extend %flex-center;
     }
 
     &-icon {
@@ -101,31 +100,30 @@
   }
 
   &__subscribe {
-    @media screen and (min-width: 480px) and (max-width: 767px) {
       margin-top: 60px;
-    }
     @media screen and (min-width: 768px) and (max-width: 1199px) {
       margin-top: 250px;
     }
     @media screen and (min-width: 1200px) {
       margin-left: 93px;
+      margin-top: 0;
     }
 
     .subscribe {
       &__form {
         &-row {
           @media screen and (min-width: 1200px) {
-            @include flex(row, $align-items: center, $gap: 12px);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
           }
         }
         &-title {
-          @include text(
-            14px,
-            $font-weight: 700,
-            $color: $white-color,
-            $text-transform: uppercase
-          );
-          @include flex(row);
+          @include text(14px, $font-weight: 700, $color: $white-color);
+          text-transform: uppercase;
+          display: flex;
+          flex-direction: row;
           justify-self: center;
           margin-bottom: 20px;
         }
@@ -146,10 +144,9 @@
           border-radius: 4px;
           color: white;
 
-          @media screen and (min-width: 480px) and (max-width: 1199px) {
-            @include flex(row);
-            justify-self: center;
-          }
+          display: flex;
+          flex-direction: row;
+          justify-self: center;
 
           &::placeholder {
             @include text(
@@ -164,11 +161,10 @@
         &-submit {
           background-color: $accent-color;
           @include text(16px, 1.875, $font-weight: 700, $color: $white-color);
-          @include flex(row, $align-items: center);
-          @media screen and (min-width: 480px) and (max-width: 1199px) {
-            margin-top: 20px;
-            justify-self: center;
-          }
+          @extend %flex-align-center;
+          flex-direction: row;
+          margin-top: 20px;
+          justify-self: center;
           padding: 10px 31px;
           border-radius: 4px;
 
